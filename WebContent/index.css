@@ -1,0 +1,73 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-family: Arial, sans-serif;
+
+	
+}
+
+
+h1 {
+	text-align: center;
+	color: black;
+	
+}
+#formulario1 {
+	width:175px;
+	margin: 0 auto;
+	border: 3px solid gray; 
+	padding: 10px;
+	border-style: outset;
+}
+
+#name {
+	
+	font-family: Arial, sans-serif;
+	margin-bottom: 10px;
+	color: maroon;
+	
+}
+
+#campo {
+	border: 1px solid maroon;
+	border-radius: 3px;
+	
+	
+}
+
+#campo2 {
+	border: 1px solid maroon;
+	border-radius: 3px;
+	
+}
+
+#botao {
+	border: 1px solid black;
+	border-radius: 3px;
+	font-size: 20px;
+	text-align: center;
+	color: maroon;
+	
+}
+
+#button {
+	margin-left:0px; 
+}
+
+#selecao {
+	border: 1px solid black;
+	border-radius: 3px;
+	font-size: 20px;
+	text-align: center;
+	color: maroon;
+	
+}
+
+#formulario2 {
+	
+	width:87px;
+	margin: 0 auto;
+	border: 3px solid gray; 
+	padding: 
+	border-style: outset;
+}
