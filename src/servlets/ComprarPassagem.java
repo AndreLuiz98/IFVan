@@ -23,11 +23,14 @@ public class ComprarPassagem extends HttpServlet {
 		String idoso = "idoso";
 		String estudante = "estudante";
 		String inteira = "inteira";
+		request.getAttribute("pessoa");
 
 		try{
 
 			Pessoa pessoa = new Pessoa();
-
+			
+			pessoa.setNome(request.getParameter("nome"));
+			pessoa.setSenha(request.getParameter("senha"));
 			pessoa.setEndereco(request.getParameter("endereco"));
 			pessoa.setTipoPassagem(request.getParameter("tipoPassagem"));
 
@@ -47,8 +50,8 @@ public class ComprarPassagem extends HttpServlet {
 			}
 			
 			Integer id = PessoaDAO.getInstance().insert(pessoa);
-			pessoa.setId(id);
-
+			pessoa.setId(id-1);
+			
 			request.setAttribute("pessoa", pessoa);
 
 			RequestDispatcher rq = request.getRequestDispatcher("index.jsp");

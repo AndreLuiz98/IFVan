@@ -130,7 +130,7 @@ public class PessoaDAO implements GenericDAO<String, Pessoa>{
 
 				pessoa.setNome(rs.getString("pessoa.NOME"));
 				pessoa.setEndereco(rs.getString("pessoa.ENDERECO"));
-				pessoa.setTipoPassagem(rs.getString("TIPOPASS"));
+				pessoa.setTipoPassagem(rs.getString("pessoa.TIPOPASS"));
 				pessoa.setPrecoPassagem(rs.getDouble("pessoa.PRECO"));
 
 				pessoas.add(pessoa);
@@ -182,22 +182,21 @@ public class PessoaDAO implements GenericDAO<String, Pessoa>{
 	}
 	@Override
 	public void delete(String nome) throws SQLException {
-		
-		PreparedStatement stmt = null;
 
-		ResultSet rs = null;
+		PreparedStatement stmt = null;
 
 		try {
 
 			// Considerar a tabela tb_pessoa composta dos campos: id (int) e nome (varchar).
 			String sql = "DELETE pessoa.*"
 					+ " FROM tb_pessoa AS pessoa"
-					+ " WHERE pessoa.NOME = " 
-					+ nome;
+					+ " WHERE pessoa.NOME = ?";
 
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
 
-			rs = stmt.executeQuery(sql);
+			stmt.setString(1, nome);
+
+			stmt.execute();
 
 			connection.close();
 
@@ -206,7 +205,41 @@ public class PessoaDAO implements GenericDAO<String, Pessoa>{
 			throw new RuntimeException(sqle);
 		}
 	}		
+	public double somar() throws SQLException{
 
+		PreparedStatement stmt = null;
+		
+		double soma = 0;
+
+		try {
+
+			// Considerar a tabela tb_pessoa composta dos campos: id (int) e nome (varchar).
+			String sql = "SELECT SUM(PRECO)"
+					+ " AS TOTAL"
+					+ " FROM tb_pessoa";
+
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while(rs.next()){
+				
+				soma = rs.getDouble("TOTAL");
+				
+			}
+
+			rs.close();
+			stmt.close();
+
+			connection.close();
+
+		} catch (SQLException sqle) {
+
+			throw new RuntimeException(sqle);
+		}
+		
+		return soma;
+	}
 	@Override
 	public void update(Pessoa entity) throws SQLException {
 		// TODO Auto-generated method stub

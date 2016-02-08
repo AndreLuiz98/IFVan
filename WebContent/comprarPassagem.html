@@ -8,24 +8,33 @@
 <body>
 	<h1>COMPRAR PASSAGEM</h1>
 	<div id="formulario1">
-	<form action="ComprarPassagem" method="POST">
-		
-		<div id="name">
-		<label>Endereço:</label>
-		<input type="text" name="endereco">
-		</div>
-		<div id="name">
-		<label>Tipo de Passagem</label>
-		<select name="tipoPassagem" id="selecao">
-			<option value="idoso">IDOSO</option>
-			<option value="estudante">ESTUDANTE</option>
-			<option value="inteira">INTEIRA</option>
-		</select>
-		</div>
-		<div id="button">
-		<input type="submit" id="botao" value="Enviar" />
-		</div>
-	</form>
-</div>
+		<form action="ComprarPassagem" method="POST">
+			
+			<div id="name">
+			<label>Nome:</label>
+			<input type="text"  name="nome">
+			</div>
+			
+			<div id="name">
+			<label>Senha:</label>
+			<input type="password"  name="senha" />
+			</div>
+			
+			<div id="name">
+				<label>Endereço:</label> <input type="text" name="endereco">
+			</div>
+			<div id="name">
+				<label>Tipo de Passagem</label> <select name="tipoPassagem"
+					id="selecao">
+					<option value="idoso">IDOSO</option>
+					<option value="estudante">ESTUDANTE</option>
+					<option value="inteira">INTEIRA</option>
+				</select>
+			</div>
+			<div id="button">
+				<input type="submit" id="botao" value="Enviar" />
+			</div>
+		</form>
+	</div>
 </body>
-</html>
+</html>s

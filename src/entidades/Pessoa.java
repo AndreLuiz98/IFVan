@@ -13,9 +13,11 @@ public class Pessoa {
 	private String senha;
 	
 	private double precoPassagem;
+	
+	private double totalPassagem;
 
 	public Pessoa(int id, String nome, String senha, String endereco, String tipoPassagem, 
-			double precoPassagem){
+			double precoPassagem, double totalPassagem){
 
 		this.id = id;
 		this.nome = nome;
@@ -23,11 +25,19 @@ public class Pessoa {
 		this.endereco = endereco;
 		this.tipoPassagem = tipoPassagem;
 		this.precoPassagem = precoPassagem;
+		this.totalPassagem = totalPassagem;
 
 	}
 
 	public Pessoa(){}
 
+	public double getTotalPassagem() {
+		return totalPassagem;
+	}
+
+	public void setTotalPassagem(double totalPassagem) {
+		this.totalPassagem = totalPassagem;
+	}
 
 	public int getId() {
 		return id;
