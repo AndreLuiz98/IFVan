@@ -11,15 +11,12 @@
 <title>CheckIN</title>
 </head>
 <body>
-<form action="FazerCheckIn" method="post">
+<form action="FazerCheckIn" method="POST">
 	<label>Nome:</label>
 	<input type="text" name="nome"><br><br>
 	
 	<input type="submit" value="Enviar">
 </form>
-	
-	
-	
 
 </body>
 </html>

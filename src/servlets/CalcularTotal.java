@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.PessoaDAO;
-import entidades.Pessoa;
 
 @WebServlet("/CalcularTotal")
 public class CalcularTotal extends HttpServlet {
@@ -24,14 +23,17 @@ public class CalcularTotal extends HttpServlet {
 
 		try{
 
-			double soma =PessoaDAO.getInstance().somar();
 			PrintWriter pw = response.getWriter(); 
 			pw.println("<HTML>");  
-			pw.println("<TITLE>C</TITLE>");  
+			pw.println("<TITLE>Calcular Total</TITLE>");  
 			pw.println("<BODY>");  
-			pw.println(soma);  
+			pw.println("<h1>O total apurado de passsagens até o momento é de:</h1>");
+			pw.println("<h1>");
+			pw.println(PessoaDAO.getInstance().somar());  
+			pw.println("</h1><br><br>");
 			pw.println("</BODY>");  
-			pw.println("</HTML>");  
+			pw.println("</HTML>");
+			
 			pw.flush();
 
 		}catch (SQLException e){

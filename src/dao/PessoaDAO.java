@@ -86,14 +86,13 @@ public class PessoaDAO implements GenericDAO<String, Pessoa>{
 		try {
 
 			// Considerar a tabela tb_pessoa composta dos campos: id (int) e nome (varchar).
-			String sql = "SELECT pessoa.ID,"
-					+ " pessoa.NOME,"
-					+ " pessoa.SENHA,"
-					+ " pessoa.ENDERECO,"
-					+ " pessoa.TIPOPASS,"
-					+ " pessoa.PRECO"
-					+ " FROM tb_pessoa AS pessoa"
-					+ " WHERE pessoa.NOME = " 
+			String sql = "SELECT ID,"
+					+ " NOME,"
+					+ " ENDERECO,"
+					+ " TIPOPASS,"
+					+ " PRECO"
+					+ " FROM tb_pessoa"
+					+ " WHERE NOME = " 
 					+ nome;
 
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -127,7 +126,7 @@ public class PessoaDAO implements GenericDAO<String, Pessoa>{
 
 				// Pessoa
 				Pessoa pessoa = new Pessoa();
-
+				
 				pessoa.setNome(rs.getString("pessoa.NOME"));
 				pessoa.setEndereco(rs.getString("pessoa.ENDERECO"));
 				pessoa.setTipoPassagem(rs.getString("pessoa.TIPOPASS"));
@@ -208,7 +207,7 @@ public class PessoaDAO implements GenericDAO<String, Pessoa>{
 	public double somar() throws SQLException{
 
 		PreparedStatement stmt = null;
-		
+
 		double soma = 0;
 
 		try {
@@ -223,9 +222,9 @@ public class PessoaDAO implements GenericDAO<String, Pessoa>{
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()){
-				
+
 				soma = rs.getDouble("TOTAL");
-				
+
 			}
 
 			rs.close();
@@ -237,8 +236,79 @@ public class PessoaDAO implements GenericDAO<String, Pessoa>{
 
 			throw new RuntimeException(sqle);
 		}
-		
+
 		return soma;
+	}
+	public int countTotal () throws SQLException{
+
+		PreparedStatement stmt = null;
+
+		int totalCount = 0;
+
+		try {
+
+			// Considerar a tabela tb_pessoa composta dos campos: id (int) e nome (varchar).
+			String sql = "SELECT COUNT(*)"
+					+ " AS TOTAL"
+					+ " FROM tb_pessoa";
+
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while(rs.next()){
+
+				totalCount = rs.getInt("TOTAL");
+
+			}
+
+			rs.close();
+			stmt.close();
+
+			connection.close();
+
+		} catch (SQLException sqle) {
+
+			throw new RuntimeException(sqle);
+		}
+
+		return totalCount;
+	}
+	public int countIdosos () throws SQLException{
+
+		PreparedStatement stmt = null;
+
+		int totalIdosos = 0;
+
+		try {
+
+			// Considerar a tabela tb_pessoa composta dos campos: id (int) e nome (varchar).
+			String sql = "SELECT COUNT(*)"
+					+ " AS TOTAL"
+					+ " FROM tb_pessoa"
+					+ " WHERE TIPOPASS = 'idoso'";
+
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while(rs.next()){
+
+				totalIdosos = rs.getInt("TOTAL");
+
+			}
+
+			rs.close();
+			stmt.close();
+
+			connection.close();
+
+		} catch (SQLException sqle) {
+
+			throw new RuntimeException(sqle);
+		}
+
+		return totalIdosos;
 	}
 	@Override
 	public void update(Pessoa entity) throws SQLException {

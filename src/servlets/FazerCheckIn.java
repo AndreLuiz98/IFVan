@@ -22,22 +22,22 @@ public class FazerCheckIn extends HttpServlet {
 		
 		String nome = null;
 		
-		Pessoa pessoa = new Pessoa();
-		
 		try{
 			
 			nome = request.getParameter("nome");
 			
 			PessoaDAO.getInstance().getById(nome);
 			
+			Pessoa pessoa = new Pessoa();
+			
 			PrintWriter pw = response.getWriter(); 
 			pw.println("<HTML>");  
 		      pw.println("<TITLE>Total apurado</TITLE>");  
 		      pw.println("<BODY>");  
 		      pw.println(pessoa.getNome());  
-		      pw.println(pessoa.getTipoPassagem());
-		      pw.println(pessoa.getEndereco());
+		      pw.println(pessoa.getId());
 		      pw.println(pessoa.getPrecoPassagem());
+		      pw.println(pessoa.getTipoPassagem());
 		      pw.println("</BODY>");  
 		      pw.println("</HTML>");  
 		      pw.flush();
